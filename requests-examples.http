@@ -1,0 +1,96 @@
+@baseUrl = http://localhost:8000/
+
+# создание продукта
+POST {{baseUrl}}/api/
+Content-Type: application/json
+
+{
+  "user": 1,
+  "text": "Тут есть кто?",
+}
+
+###
+
+# получение всех продуктов
+GET {{baseUrl}}/course/
+Content-Type: application/json
+
+###
+
+# обновление продукта
+PATCH {{baseUrl}}/product/5/
+Content-Type: application/json
+
+{
+  "description": "Самые сочные и ароматные помидорки"
+}
+
+###
+
+# удаление продукта
+DELETE {{baseUrl}}/product/5/
+Content-Type: application/json
+
+###
+
+# поиск продуктов по названию и описанию
+GET {{baseUrl}}/product/?title=Помидор
+Content-Type: application/json
+
+###
+
+# создание склада
+POST {{baseUrl}}/stocks/
+Content-Type: application/json
+
+{
+  "address": "дом 7",
+  "positions": [
+    {
+      "product": 1,
+      "quantity": 250,
+      "price": 120.50
+    },
+    {
+      "product": 2,
+      "quantity": 100,
+      "price": 180
+    }
+  ]
+}
+###
+
+# обновляем записи на складе
+PATCH {{baseUrl}}/stocks/7/
+Content-Type: application/json
+
+{
+  "positions": [
+    {
+      "product": 1,
+      "quantity": 100,
+      "price": 130.80
+    },
+    {
+      "product": 4,
+      "quantity": 243,
+      "price": 145
+    }
+  ]
+}
+
+###
+
+# поиск складов, где есть определенный продукт
+GET {{baseUrl}}/stocks/?products=4
+Content-Type: application/json
+
+###
+
+#Просмотр всех складов 
+GET {{baseUrl}}/stocks/
+
+###
+
+#Удаление склада
+DELETE {{baseUrl}}/stocks/9/
