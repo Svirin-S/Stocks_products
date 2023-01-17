@@ -31,6 +31,7 @@ class StockSerializer(serializers.ModelSerializer):
             objects.append(stock_item)
             StockProduct.objects.bulk_create(objects)
         return stock_product
+     
     
 
  
