@@ -1,5 +1,6 @@
 from django.shortcuts import render
 from rest_framework.viewsets import ViewSet, ModelViewSet
+from rest_framework.filters import SearchFilter
 
 from .serializers import*
 from .models import *
@@ -8,7 +9,8 @@ from .models import *
 class ProductViewSet(ModelViewSet):
     queryset = Product.objects.all()
     serializer_class = ProductSerializer
-    filterset_fields = ['title', 'description']
+    filter_backends = [SearchFilter]
+    search_fields = ['title', 'description']
 
 
 class StockViewSet(ModelViewSet):
